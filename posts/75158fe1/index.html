@@ -329,16 +329,11 @@
 <p><img src="http://img.cocodemo.fun/202211282250682.png" alt="image-20221128225038346"></p>
 <p>乍一看我这个仿真器有点不太一样，其实是一样用的。接下来讲讲jlink驱动的安装</p>
 <h3 id="驱动安装"><a href="#驱动安装" class="headerlink" title="驱动安装"></a>驱动安装</h3><ul>
-<li><p>一步到位的方式就是直接安装e2studio，安装过程会顺带安装jlink驱动，如果你觉得这样不符合自己喜欢钻研的风格，可以看第二步。</p>
-</li>
-<li><p>官网[传送门](<a target="_blank" rel="noopener" href="https://www.segger.com/downloads/jlink/">SEGGER - The Embedded Experts - Downloads - J-Link / J-Trace</a>)</p>
-</li>
-<li><p><img src="http://img.cocodemo.fun/202211282250769.png" alt="image-20221128225053589"></p>
-</li>
-<li><p>如果你不知道安装那个版本，选择最新的就好了。</p>
-</li>
-<li><p><img src="http://img.cocodemo.fun/202211282253435.png" alt="image-20221128225314362"></p>
-</li>
+<li>一步到位的方式就是直接安装e2studio，安装过程会顺带安装jlink驱动，如果你觉得这样不符合自己喜欢钻研的风格，可以看第二步。</li>
+<li>官网[传送门](<a target="_blank" rel="noopener" href="https://www.segger.com/downloads/jlink/">SEGGER - The Embedded Experts - Downloads - J-Link / J-Trace</a>)</li>
+<li><img src="http://img.cocodemo.fun/202211282250769.png" alt="image-20221128225053589"></li>
+<li>如果你不知道安装那个版本，选择最新的就好了。</li>
+<li><img src="http://img.cocodemo.fun/202211282253435.png" alt="image-20221128225314362"></li>
 <li><blockquote>
 <p>友情提醒：</p>
 <p>如果你使用的JLINK仿真器是所谓的克隆版也就是山寨，在使用jlink仿真调试的时候会是时不时弹出一个弹窗(如上图)，提醒你用的是盗版的仿真器，如果你想避免遇到这种有两个办法</p>
@@ -348,8 +343,7 @@
 </ul>
 </blockquote>
 </li>
-<li><p>下载完成后自由安装即可。</p>
-</li>
+<li>下载完成后自由安装即可。</li>
 </ul>
 <h3 id="e2studio安装"><a href="#e2studio安装" class="headerlink" title="e2studio安装"></a>e2studio安装</h3><p>虽然教程和官方资料非常的齐全，这里啰嗦几句。</p>
 <p>对于新手，想使用e2studio开发在windows下开发，推荐安装[setup_fsp_vx_x_x_e2s_v20xx-xx.exe]这种安装包，它涵盖了一个特定版本的fsp，在RA4M2上，我选择了这个版本<a target="_blank" rel="noopener" href="https://github.com/renesas/fsp/releases/download/v4.0.0/setup_fsp_v4_0_0_e2s_v2022-07.exe">setup_fsp_v4_0_0_e2s_v2022-07.exe</a></p>
@@ -388,38 +382,24 @@
 <li><img src="http://img.cocodemo.fun/202211292040201.png" alt="image-20221129204007154"></li>
 <li>双击打开hal_entry.c文件。这个``hal_entry```函数是裸机程序启动后最终进来的函数入口，它来自</li>
 </ol>
-<p><code>main</code>函数，如果说main函数是熟悉的开始，那这个<code>hal_entry()</code>是另一种开始。我们后续增加的裸机程序都是在这个函数体内增加。</p>
+<p><code>main</code>函数，如果说main函数是熟悉的开始，那这个 <code>hal_entry()</code>是另一种开始。我们后续增加的裸机程序都是在这个函数体内增加。</p>
 <ol start="4">
-<li><p>接下来直接用小锤子锤一下新项目</p>
-</li>
-<li><p><img src="http://img.cocodemo.fun/202211292040107.png" alt="image-20221129204021059"></p>
-</li>
-<li><p>可以看到，编译生辰了一个.elf的可执行文件，接下来开始仿真</p>
-</li>
-<li><p><img src="http://img.cocodemo.fun/202211292040540.png" alt="image-20221129204031501"></p>
-</li>
-<li><p>放心，仿真器的配置什么的，你暂时不需要操心，IDE已经帮你配置好了，很棒是吧。直接点小虫子就可了。</p>
-</li>
-<li><p>调试烧录成功后，会有个弹窗，问你是否需要切换到调试视图，切换嘛，很好玩的。</p>
-</li>
-<li><p>切换到调试视图后，看到类似画面</p>
-</li>
-<li><p><img src="http://img.cocodemo.fun/202211292040051.png" alt="image-20221129204041001"></p>
-</li>
-<li><p>点击绿色按钮，进行系统的初始化，这过程包含了初始化向量表，系统时钟初始化等等系统初始化的子过程。</p>
-</li>
-<li><p>之后来到了这个界面</p>
-</li>
-<li><p><img src="http://img.cocodemo.fun/202211292040675.png" alt="image-20221129204051630"></p>
-</li>
-<li><p>在这里跳转到刚刚提到的<code>hal_entry()</code>入口。</p>
-</li>
-<li><p>在点击下绿色按钮，程序就运行起来了。</p>
-</li>
+<li>接下来直接用小锤子锤一下新项目</li>
+<li><img src="http://img.cocodemo.fun/202211292040107.png" alt="image-20221129204021059"></li>
+<li>可以看到，编译生辰了一个.elf的可执行文件，接下来开始仿真</li>
+<li><img src="http://img.cocodemo.fun/202211292040540.png" alt="image-20221129204031501"></li>
+<li>放心，仿真器的配置什么的，你暂时不需要操心，IDE已经帮你配置好了，很棒是吧。直接点小虫子就可了。</li>
+<li>调试烧录成功后，会有个弹窗，问你是否需要切换到调试视图，切换嘛，很好玩的。</li>
+<li>切换到调试视图后，看到类似画面</li>
+<li><img src="http://img.cocodemo.fun/202211292040051.png" alt="image-20221129204041001"></li>
+<li>点击绿色按钮，进行系统的初始化，这过程包含了初始化向量表，系统时钟初始化等等系统初始化的子过程。</li>
+<li>之后来到了这个界面</li>
+<li><img src="http://img.cocodemo.fun/202211292040675.png" alt="image-20221129204051630"></li>
+<li>在这里跳转到刚刚提到的 <code>hal_entry()</code>入口。</li>
+<li>在点击下绿色按钮，程序就运行起来了。</li>
 </ol>
 <h3 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h3><p>这篇我展示了jlink的驱动安装、和开发板的接线、e2studio的安装、项目的编译、和调试基本的几个过程，后续希望能写点别的比较好玩的帖子，我已经不想再点灯了，哪怕是换着法子去点灯。</p>
 <p>之前由于图床设置的有些问题，导致有些照片显示不了，现在更新到七牛云稳定多了。</p>
-<p><img src="http://img.cocodemo.fun/202211282249516.png" alt="image-20221128224913440"></p>
 
   </div>
   <div id="gitalk-container"></div>
