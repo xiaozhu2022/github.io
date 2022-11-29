@@ -320,84 +320,105 @@
   <div id="article" class="post-content-info">
     
 
-    <h2 id="RA4M2使用JLINK在线仿真"><a href="#RA4M2使用JLINK在线仿真" class="headerlink" title="RA4M2使用JLINK在线仿真"></a>RA4M2使用JLINK在线仿真</h2><p><strong>当我们拿着开发板，即将开干的时候，因为仿真器？驱动？接线？各种没接好导致仿真不了，于是找人请教，查资料，如果你当下就遇到了这样的，这篇不太成熟的文字可能可以帮到你。</strong></p>
-<p><strong>我所说的内容是基于现在手头已有jlink仿真器的条件下，并且使用e2studio开发。</strong></p>
-<p><strong>这个仿真器长这样</strong></p>
-<p><img src="https://gitee.com/jujubo2020/photobed1/raw/master/path/Jlink%E4%BB%BF%E7%9C%9F%E5%99%A8.png" alt="image-20221128160510700"></p>
-<p><strong>又或者长这些样</strong></p>
-<p><img src="https://gitee.com/jujubo2020/photobed1/raw/master/path/202211281609344.png" alt="image-20221128160945203"></p>
-<p><strong>乍一看我这个仿真器有点不太一样，其实是一样用的。接下来讲讲jlink驱动的安装</strong></p>
+    <p>当我们拿着开发板，即将开干的时候，因为仿真器？驱动？接线？各种没接好导致仿真不了，于是找人请教，查资料，如果你当下就遇到了这样的，这篇不太成熟的文字可能可以帮到你。</p>
+<p>我所说的内容是基于现在手头已有jlink仿真器的条件下，并且使用e2studio开发。</p>
+<p>这个仿真器长这样</p>
+<p><img src="http://img.cocodemo.fun/202211282250094.png" alt="image-20221128225019881"></p>
+<p>又或者长这些样</p>
+<p><img src="http://img.cocodemo.fun/202211282250682.png" alt="image-20221128225038346"></p>
+<p>乍一看我这个仿真器有点不太一样，其实是一样用的。接下来讲讲jlink驱动的安装</p>
 <h3 id="驱动安装"><a href="#驱动安装" class="headerlink" title="驱动安装"></a>驱动安装</h3><ul>
-<li><strong>一步到位的方式就是直接安装e2studio，安装过程会顺带安装jlink驱动，如果你觉得这样不符合自己喜欢钻研的风格，可以看第二步。</strong></li>
-<li><strong>官网</strong><a href="%5BSEGGER%20-%20The%20Embedded%20Experts%20-%20Downloads%20-%20J-Link%20/%20J-Trace%5D(https://www.segger.com/downloads/jlink/)">传送门</a></li>
-<li><img src="https://gitee.com/jujubo2020/photobed1/raw/master/path/202211281615407.png" alt="image-20221128161516321"></li>
-<li><strong>如果你不知道安装那个版本，选择最新的就好了。</strong></li>
-<li><img src="file://C:/Users/jujub/AppData/Roaming/Typora/typora-user-images/image-20221128170322814.png?lastModify=1669647695" alt="image-20221128170322814"></li>
+<li><p>一步到位的方式就是直接安装e2studio，安装过程会顺带安装jlink驱动，如果你觉得这样不符合自己喜欢钻研的风格，可以看第二步。</p>
+</li>
+<li><p>官网[传送门](<a target="_blank" rel="noopener" href="https://www.segger.com/downloads/jlink/">SEGGER - The Embedded Experts - Downloads - J-Link / J-Trace</a>)</p>
+</li>
+<li><p><img src="http://img.cocodemo.fun/202211282250769.png" alt="image-20221128225053589"></p>
+</li>
+<li><p>如果你不知道安装那个版本，选择最新的就好了。</p>
+</li>
+<li><p><img src="http://img.cocodemo.fun/202211282253435.png" alt="image-20221128225314362"></p>
+</li>
 <li><blockquote>
-<p><strong>友情提醒：</strong></p>
-<p><strong>如果你使用的JLINK仿真器是所谓的克隆版也就是山寨，在使用jlink仿真调试的时候会是时不时弹出一个弹窗(如上图)，提醒你用的是盗版的仿真器，如果你想避免遇到这种有两个办法</strong></p>
+<p>友情提醒：</p>
+<p>如果你使用的JLINK仿真器是所谓的克隆版也就是山寨，在使用jlink仿真调试的时候会是时不时弹出一个弹窗(如上图)，提醒你用的是盗版的仿真器，如果你想避免遇到这种有两个办法</p>
 <ul>
-<li><strong>使用正版的仿真器</strong></li>
-<li><strong>使用旧版本的jlink版本，安装6.x的版本</strong></li>
+<li>使用正版的仿真器</li>
+<li>使用旧版本的jlink版本，安装6.x的版本</li>
 </ul>
 </blockquote>
 </li>
-<li><strong>下载完成后自由安装即可。</strong></li>
+<li><p>下载完成后自由安装即可。</p>
+</li>
 </ul>
-<h3 id="e2studio安装"><a href="#e2studio安装" class="headerlink" title="e2studio安装"></a>e2studio安装</h3><p><strong>虽然教程和官方资料非常的齐全，这里啰嗦几句。</strong></p>
-<p><strong>对于新手，想使用e2studio开发在windows下开发，推荐安装[setup_fsp_vx_x_x_e2s_v20xx-xx.exe]这种安装包，它涵盖了一个特定版本的fsp，在RA4M2上，我选择了这个版本</strong><a target="_blank" rel="noopener" href="https://github.com/renesas/fsp/releases/download/v4.0.0/setup_fsp_v4_0_0_e2s_v2022-07.exe">setup_fsp_v4_0_0_e2s_v2022-07.exe</a></p>
-<p><img src="https://gitee.com/jujubo2020/photobed1/raw/master/path/202211281627507.png" alt="image-20221128162732444"></p>
-<p><strong>下载界面</strong></p>
+<h3 id="e2studio安装"><a href="#e2studio安装" class="headerlink" title="e2studio安装"></a>e2studio安装</h3><p>虽然教程和官方资料非常的齐全，这里啰嗦几句。</p>
+<p>对于新手，想使用e2studio开发在windows下开发，推荐安装[setup_fsp_vx_x_x_e2s_v20xx-xx.exe]这种安装包，它涵盖了一个特定版本的fsp，在RA4M2上，我选择了这个版本<a target="_blank" rel="noopener" href="https://github.com/renesas/fsp/releases/download/v4.0.0/setup_fsp_v4_0_0_e2s_v2022-07.exe">setup_fsp_v4_0_0_e2s_v2022-07.exe</a></p>
+<p><img src="http://img.cocodemo.fun/202211282251078.png" alt="image-20221128225102971"></p>
+<p>下载界面</p>
 <p><a target="_blank" rel="noopener" href="https://github.com/renesas/fsp/releases">Releases · renesas/fsp (github.com)</a></p>
-<p><strong>如果你后续需要增加其他fsp版本时，直接在原有基础上增加即可，方法可以参考这篇文章，这货写的挺好，因为他是碰过壁的。</strong><a target="_blank" rel="noopener" href="https://bbs.elecfans.com/jishu_2316432_1_1.html">e2studio更换toolchain和fsp版本 - 瑞萨单片机论坛 - 电子技术论坛 - 广受欢迎的专业电子论坛! (elecfans.com)</a></p>
-<p><strong>下载完成后，安装过程略过。</strong></p>
+<p>如果你后续需要增加其他fsp版本时，直接在原有基础上增加即可，方法可以参考这篇文章，这货写的挺好，因为他是碰过壁的。<a target="_blank" rel="noopener" href="https://bbs.elecfans.com/jishu_2316432_1_1.html">e2studio更换toolchain和fsp版本 - 瑞萨单片机论坛 - 电子技术论坛 - 广受欢迎的专业电子论坛! (elecfans.com)</a></p>
+<p>下载完成后，安装过程略过。</p>
 <blockquote>
-<p><strong>友情提示： 如果你在使用了比较长的一段时间，你可能安装过多次或多个e2studio，你可能会遇到仿真调试过程中开始运行没多久就断连的情况，造成这个问题的原因还不清楚，但目前来看，选择一个全新的路径重新安装e2studio就能解决这个问题。希望大伙不会碰到这个恼火的问题。</strong></p>
+<p>友情提示： 如果你在使用了比较长的一段时间，你可能安装过多次或多个e2studio，你可能会遇到仿真调试过程中开始运行没多久就断连的情况，造成这个问题的原因还不清楚，但目前来看，选择一个全新的路径重新安装e2studio就能解决这个问题。希望大伙不会碰到这个恼火的问题。</p>
 </blockquote>
-<h3 id="连接RA4M2板子"><a href="#连接RA4M2板子" class="headerlink" title="连接RA4M2板子"></a>连接RA4M2板子</h3><p><strong>这里使用杜邦线连接，</strong></p>
-<p><img src="https://gitee.com/jujubo2020/photobed1/raw/master/path/202211281639706.png" alt="image-20221128163951557"></p>
-<p><strong>接线一览</strong></p>
-<p><strong>jlink仿真器有两种接线方式，一种是JTAG，另一种的SWD</strong></p>
-<p><strong>这两者的区别可以自行查资料，我这里使用的是SWD模式</strong></p>
-<p><img src="https://gitee.com/jujubo2020/photobed1/raw/master/path/202211281644948.png" alt="image-20221128164438894"></p>
-<p><strong>其中RESET脚我没接，只接了</strong></p>
-<p><strong>VCC \ SWDIO \ SWCLK \ GND，分别对应RA4M2板子上的相同标记的引脚</strong></p>
-<p><img src="https://gitee.com/jujubo2020/photobed1/raw/master/path/202211281646170.png" alt="image-20221128164657009"></p>
-<p><strong>连接仿真器后，板子还需要额外的供电，使用附带的那条数据线兼电源线给板子供电即可。</strong></p>
-<h3 id="仿真调试"><a href="#仿真调试" class="headerlink" title="仿真调试"></a>仿真调试</h3><p><strong>打开e2studio，新建项目</strong></p>
-<p><img src="https://gitee.com/jujubo2020/photobed1/raw/master/path/202211281649467.png" alt="image-20221128164927405"></p>
-<p><img src="https://gitee.com/jujubo2020/photobed1/raw/master/path/202211281649740.png" alt="image-20221128164951694"></p>
-<p><img src="https://gitee.com/jujubo2020/photobed1/raw/master/path/202211281650127.png" alt="image-20221128165029070"></p>
-<p><img src="https://gitee.com/jujubo2020/photobed1/raw/master/path/202211281651821.png" alt="image-20221128165107752"></p>
-<p><strong>其他选项默认，下一步</strong></p>
-<p><img src="https://gitee.com/jujubo2020/photobed1/raw/master/path/202211281651883.png" alt="image-20221128165140828"></p>
-<p><strong>下一步，看需求，不需要rtos可以默认不选</strong></p>
-<p><img src="https://gitee.com/jujubo2020/photobed1/raw/master/path/202211281652894.png" alt="image-20221128165216837"></p>
-<p><img src="https://gitee.com/jujubo2020/photobed1/raw/master/path/202211281652959.png" alt="image-20221128165240860"></p>
-<p><strong>以上演示了一个最基本的新建项目的过程</strong></p>
-<p><strong>接下来测试下jlink仿真器是否可以正常烧录</strong></p>
+<h3 id="连接RA4M2板子"><a href="#连接RA4M2板子" class="headerlink" title="连接RA4M2板子"></a>连接RA4M2板子</h3><p>这里使用杜邦线连接，</p>
+<p><img src="http://img.cocodemo.fun/202211282251736.png" alt="image-20221128225114499"></p>
+<p>接线一览</p>
+<p>jlink仿真器有两种接线方式，一种是JTAG，另一种的SWD</p>
+<p>这两者的区别可以自行查资料，我这里使用的是SWD模式</p>
+<p><img src="http://img.cocodemo.fun/202211282253372.png" alt="image-20221128225328266"></p>
+<p>其中RESET脚我没接，只接了</p>
+<p>VCC \ SWDIO \ SWCLK \ GND，分别对应RA4M2板子上的相同标记的引脚</p>
+<p><img src="http://img.cocodemo.fun/202211292037061.png" alt="image-20221128225337075"></p>
+<p>连接仿真器后，板子还需要额外的供电，使用附带的那条数据线兼电源线给板子供电即可。</p>
+<h3 id="仿真调试"><a href="#仿真调试" class="headerlink" title="仿真调试"></a>仿真调试</h3><p>打开e2studio，新建项目</p>
+<p><img src="http://img.cocodemo.fun/202211292038321.png" alt="image-20221129203841259"></p>
+<p><img src="http://img.cocodemo.fun/202211292038231.png" alt="image-20221129203857176"></p>
+<p><img src="http://img.cocodemo.fun/202211292039200.png" alt="image-20221129203906154"></p>
+<p><img src="http://img.cocodemo.fun/202211292039714.png" alt="image-20221129203916660"></p>
+<p>其他选项默认，下一步</p>
+<p><img src="http://img.cocodemo.fun/202211292039151.png" alt="image-20221129203928093"></p>
+<p>下一步，看需求，不需要rtos可以默认不选</p>
+<p><img src="http://img.cocodemo.fun/202211292039057.png" alt="image-20221129203938007"></p>
+<p><img src="http://img.cocodemo.fun/202211292039928.png" alt="image-20221129203947866"></p>
+<p>以上演示了一个最基本的新建项目的过程</p>
+<p>接下来测试下jlink仿真器是否可以正常烧录</p>
 <ol>
-<li><strong>展开刚刚新建的项目</strong></li>
-<li><img src="https://gitee.com/jujubo2020/photobed1/raw/master/path/202211281654175.png" alt="image-20221128165426125"></li>
-<li><strong>双击打开hal_entry.c文件。这个``hal_entry```函数是裸机程序启动后最终进来的函数入口，它来自</strong></li>
+<li>展开刚刚新建的项目</li>
+<li><img src="http://img.cocodemo.fun/202211292040201.png" alt="image-20221129204007154"></li>
+<li>双击打开hal_entry.c文件。这个``hal_entry```函数是裸机程序启动后最终进来的函数入口，它来自</li>
 </ol>
-<p><code>main</code>函数，如果说main函数是熟悉的开始，那这个 <code>hal_entry()</code>是另一种开始。我们后续增加的裸机程序都是在这个函数体内增加。</p>
+<p><code>main</code>函数，如果说main函数是熟悉的开始，那这个<code>hal_entry()</code>是另一种开始。我们后续增加的裸机程序都是在这个函数体内增加。</p>
 <ol start="4">
-<li><strong>接下来直接用小锤子锤一下新项目</strong></li>
-<li><img src="https://gitee.com/jujubo2020/photobed1/raw/master/path/202211281658128.png" alt="image-20221128165857051"></li>
-<li><strong>可以看到，编译生辰了一个.elf的可执行文件，接下来开始仿真</strong></li>
-<li><img src="https://gitee.com/jujubo2020/photobed1/raw/master/path/202211281700808.png" alt="image-20221128170047768"></li>
-<li><strong>放心，仿真器的配置什么的，你暂时不需要操心，IDE已经帮你配置好了，很棒是吧。直接点小虫子就可了。</strong></li>
-<li><strong>调试烧录成功后，会有个弹窗，问你是否需要切换到调试视图，切换嘛，很好玩的。</strong></li>
-<li><strong>切换到调试视图后，看到类似画面</strong></li>
-<li><img src="https://gitee.com/jujubo2020/photobed1/raw/master/path/202211281705017.png" alt="image-20221128170537892"></li>
-<li><strong>点击绿色按钮，进行系统的初始化，这过程包含了初始化向量表，系统时钟初始化等等系统初始化的子过程。</strong></li>
-<li><strong>之后来到了这个界面</strong></li>
-<li><img src="https://gitee.com/jujubo2020/photobed1/raw/master/path/202211281707575.png" alt="image-20221128170739519"></li>
-<li><strong>在这里跳转到刚刚提到的</strong> <code>hal_entry()</code>入口。</li>
-<li><strong>在点击下绿色按钮，程序就运行起来了。</strong></li>
+<li><p>接下来直接用小锤子锤一下新项目</p>
+</li>
+<li><p><img src="http://img.cocodemo.fun/202211292040107.png" alt="image-20221129204021059"></p>
+</li>
+<li><p>可以看到，编译生辰了一个.elf的可执行文件，接下来开始仿真</p>
+</li>
+<li><p><img src="http://img.cocodemo.fun/202211292040540.png" alt="image-20221129204031501"></p>
+</li>
+<li><p>放心，仿真器的配置什么的，你暂时不需要操心，IDE已经帮你配置好了，很棒是吧。直接点小虫子就可了。</p>
+</li>
+<li><p>调试烧录成功后，会有个弹窗，问你是否需要切换到调试视图，切换嘛，很好玩的。</p>
+</li>
+<li><p>切换到调试视图后，看到类似画面</p>
+</li>
+<li><p><img src="http://img.cocodemo.fun/202211292040051.png" alt="image-20221129204041001"></p>
+</li>
+<li><p>点击绿色按钮，进行系统的初始化，这过程包含了初始化向量表，系统时钟初始化等等系统初始化的子过程。</p>
+</li>
+<li><p>之后来到了这个界面</p>
+</li>
+<li><p><img src="http://img.cocodemo.fun/202211292040675.png" alt="image-20221129204051630"></p>
+</li>
+<li><p>在这里跳转到刚刚提到的<code>hal_entry()</code>入口。</p>
+</li>
+<li><p>在点击下绿色按钮，程序就运行起来了。</p>
+</li>
 </ol>
-<h3 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h3><p><strong>这篇我展示了jlink的驱动安装、和开发板的接线、e2studio的安装、项目的编译、和调试基本的几个过程，后续希望能写点别的比较好玩的帖子，我已经不想再点灯了，哪怕是换着法子去点灯。</strong></p>
+<h3 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h3><p>这篇我展示了jlink的驱动安装、和开发板的接线、e2studio的安装、项目的编译、和调试基本的几个过程，后续希望能写点别的比较好玩的帖子，我已经不想再点灯了，哪怕是换着法子去点灯。</p>
+<p>之前由于图床设置的有些问题，导致有些照片显示不了，现在更新到七牛云稳定多了。</p>
+<p><img src="http://img.cocodemo.fun/202211282249516.png" alt="image-20221128224913440"></p>
 
   </div>
   <div id="gitalk-container"></div>
